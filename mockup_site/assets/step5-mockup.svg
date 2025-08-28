@@ -1,0 +1,10 @@
+<!-- SVG placeholder for step 5 mockup -->
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f5f5f5"/>
+  <rect x="25" y="30" width="250" height="140" fill="#e0e0e0" rx="5"/>
+  <rect x="40" y="50" width="220" height="20" fill="#fff" rx="3"/>
+  <rect x="40" y="80" width="220" height="20" fill="#fff" rx="3"/>
+  <rect x="40" y="110" width="220" height="20" fill="#fff" rx="3"/>
+  <rect x="40" y="140" width="80" height="20" fill="#10b981" rx="3"/>
+  <text x="150" y="185" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">Content creation interface</text>
+</svg>

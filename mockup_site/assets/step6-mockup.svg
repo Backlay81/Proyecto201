@@ -1,0 +1,15 @@
+<!-- SVG placeholder for step 6 mockup -->
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f5f5f5"/>
+  <rect x="25" y="30" width="250" height="140" fill="#e0e0e0" rx="5"/>
+  <!-- Chart bars -->
+  <rect x="40" y="120" width="15" height="40" fill="#6366f1"/>
+  <rect x="65" y="100" width="15" height="60" fill="#10b981"/>
+  <rect x="90" y="80" width="15" height="80" fill="#f59e0b"/>
+  <rect x="115" y="110" width="15" height="50" fill="#ef4444"/>
+  <rect x="140" y="90" width="15" height="70" fill="#8b5cf6"/>
+  <rect x="165" y="70" width="15" height="90" fill="#06b6d4"/>
+  <rect x="190" y="85" width="15" height="75" fill="#84cc16"/>
+  <rect x="215" y="95" width="15" height="65" fill="#f97316"/>
+  <text x="150" y="185" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">Performance analytics</text>
+</svg>
