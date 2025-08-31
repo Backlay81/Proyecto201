@@ -20,15 +20,18 @@
   </nav>
 
   <main class="container">
+    <div class="demo-banner">🧪 This page shows a public demo using simulated data only. No API calls are executed here.</div>
+    
     <h1>Demo (Mock Data)</h1>
     <p><strong>Note:</strong> This demo uses simulated data for demonstration purposes only. No live API calls are made from this page.</p>
     <p><strong>API Usage Control:</strong> Estimated API units per query: ~2. Max API usage: < 100 units/day, internally controlled.</p>
 
     <section class="demo-search">
       <div class="search-box">
-        <input type="text" placeholder="Enter seed keyword" disabled>
-        <button disabled>Search (demo)</button>
+        <input type="text" placeholder="Enter seed keyword" id="demo-input">
+        <button onclick="simulateSearch()" id="demo-search-btn">Search (demo)</button>
       </div>
+      <div id="loading-indicator" class="loading hidden">🔄 Loading results...</div>
     </section>
 
     <section class="demo-table">
@@ -93,11 +96,43 @@
 
   </main>
 
+  <script>
+    function simulateSearch() {
+      const btn = document.getElementById('demo-search-btn');
+      const loading = document.getElementById('loading-indicator');
+      const table = document.querySelector('.demo-table');
+      
+      btn.disabled = true;
+      btn.textContent = 'Searching...';
+      loading.classList.remove('hidden');
+      table.style.opacity = '0.5';
+      
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Search (demo)';
+        table.style.opacity = '1';
+        
+        // Optional: show a brief "results updated" message
+        const note = document.createElement('div');
+        note.className = 'update-note';
+        note.textContent = '✅ Demo results updated (simulated)';
+        table.insertBefore(note, table.firstChild);
+        
+        setTimeout(() => note.remove(), 3000);
+      }, 1500);
+    }
+  </script>
+
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 Personal Keyword Research Tool</p>
       <p><a href="index.html">Home</a> | <a href="privacy.html">Privacy</a></p>
     </div>
+  </footer>
+
+  <footer class="site-footer">
+    <p>🔒 Internal tool for keyword research. API usage limited and monitored. Not available for public use.</p>
   </footer>
 </body>
 </html>

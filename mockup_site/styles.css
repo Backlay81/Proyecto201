@@ -460,6 +460,95 @@ table th {
 .status-published { color: #28a745; font-weight: bold; }
 .status-planned { color: #17a2b8; font-weight: bold; }
 
+/* New compliance and demo styles */
+.demo-banner {
+    background: #e7f3ff;
+    border: 1px solid #0066cc;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: #0066cc;
+}
+
+.niche-comparison {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.comparison-table .highlight-row {
+    background: #fff3cd;
+    font-weight: 600;
+}
+
+.api-usage-note {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    color: #155724;
+    font-size: 0.9rem;
+}
+
+.disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    color: #856404;
+    font-style: italic;
+}
+
+.btn-draft {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+.loading {
+    text-align: center;
+    color: #0066cc;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.update-note {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer {
+    background: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 0;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
 /* Responsive Design */
 @media(max-width: 768px) {
     .hero .container {
