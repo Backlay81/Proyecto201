@@ -1,0 +1,17 @@
+# Requirements para el Sistema de Análisis de Nichos - Versión Simplificada
+# Proyecto 201 digital - Opción A (Sistema automático)
+
+# Google APIs - Versión compatible
+google-api-python-client>=2.100.0
+google-auth>=2.20.0
+google-auth-oauthlib>=1.0.0
+
+# Google Trends
+pytrends>=4.9.0
+
+# Utilidades básicas
+requests>=2.31.0
+
+# Fecha: 28/08/2025
+# Versión: 1.0 - Simplificada para compatibilidad
+# Versión: 1.0
