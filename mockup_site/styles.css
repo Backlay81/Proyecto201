@@ -381,6 +381,85 @@ img {
     text-align: center;
 }
 
+/* New Organization Styles */
+.niche-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.niche-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.niche-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.niche-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.search-box {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    max-width: 600px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-box button {
+    padding: 0.75rem 1.5rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-box button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.status-draft { color: #ffc107; font-weight: bold; }
+.status-published { color: #28a745; font-weight: bold; }
+.status-planned { color: #17a2b8; font-weight: bold; }
+
 /* Responsive Design */
 @media(max-width: 768px) {
     .hero .container {
