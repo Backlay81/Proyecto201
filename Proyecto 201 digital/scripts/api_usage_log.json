@@ -1,75 +1,52 @@
 {
-  "current_date": "2025-08-29",
+  "current_date": "2025-08-31",
   "daily_usage": {
-    "youtube_units": 4644,
-    "trends_requests": 1,
-    "total_requests": 8
+    "youtube_units": 202,
+    "trends_requests": 0,
+    "total_requests": 4
   },
   "daily_log": [
     {
-      "timestamp": "2025-08-29T00:00:25.692553",
-      "api": "youtube",
-      "operation": "historical_sync",
-      "units": 1212,
-      "keyword": "analisis_historico_1",
-      "details": "Análisis 28/08 - 12 nichos"
-    },
-    {
-      "timestamp": "2025-08-29T00:10:25.692553",
-      "api": "youtube",
-      "operation": "historical_sync",
-      "units": 101,
-      "keyword": "analisis_historico_2",
-      "details": "Análisis 29/08 - seguros mascotas"
-    },
-    {
-      "timestamp": "2025-08-29T00:20:25.692553",
-      "api": "youtube",
-      "operation": "historical_sync",
-      "units": 101,
-      "keyword": "analisis_historico_3",
-      "details": "Análisis 29/08 - individual"
-    },
-    {
-      "timestamp": "2025-08-29T00:30:25.692553",
-      "api": "youtube",
-      "operation": "historical_sync",
-      "units": 1010,
-      "keyword": "analisis_historico_4",
-      "details": "Análisis 29/08 - Ultimate con Trends"
-    },
-    {
-      "timestamp": "2025-08-29T00:40:25.692553",
-      "api": "youtube",
-      "operation": "historical_sync",
-      "units": 2119,
-      "keyword": "requests_adicionales",
-      "details": "Requests adicionales no contabilizados"
-    },
-    {
-      "timestamp": "2025-08-29T01:30:52.542281",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "trending_searches_spain",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-08-29T01:30:52.970111",
+      "timestamp": "2025-08-31T20:27:14.615636",
       "api": "youtube",
       "operation": "search",
       "units": 100,
-      "keyword": "finanzas personales",
+      "keyword": "curso de criptomoneda",
       "details": "YouTube search.list()"
     },
     {
-      "timestamp": "2025-08-29T01:30:53.843867",
+      "timestamp": "2025-08-31T20:27:15.873174",
       "api": "youtube",
       "operation": "videos",
       "units": 1,
-      "keyword": "finanzas personales",
+      "keyword": "curso de criptomoneda",
+      "details": "YouTube videos.list() - 1 videos"
+    },
+    {
+      "timestamp": "2025-08-31T20:27:52.233883",
+      "api": "youtube",
+      "operation": "search",
+      "units": 100,
+      "keyword": "donde invertir mis ahorros",
+      "details": "YouTube search.list()"
+    },
+    {
+      "timestamp": "2025-08-31T20:27:52.736048",
+      "api": "youtube",
+      "operation": "videos",
+      "units": 1,
+      "keyword": "donde invertir mis ahorros",
       "details": "YouTube videos.list() - 1 videos"
     }
   ],
-  "historical": {}
+  "historical": {
+    "2025-08-29": {
+      "daily_usage": {
+        "youtube_units": 4644,
+        "trends_requests": 1,
+        "total_requests": 8
+      },
+      "total_requests": 8
+    }
+  }
 }
