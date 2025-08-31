@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>API Status Dashboard - Personal Research Tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><a href="index.html"><img src="assets/logo-placeholder.svg" alt="logo" id="logo-img"></a></div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="discovery.html">Niche Discovery</a></li>
+        <li><a href="planner.html">Content Planner</a></li>
+        <li><a href="status.html">API Status</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>📊 API Usage Dashboard</h1>
+    <p><strong>Real-time monitoring</strong> of Google Ads API usage for internal compliance and cost control.</p>
+
+    <section class="status-grid">
+      <div class="status-card">
+        <h3>📈 Today's Usage</h3>
+        <div class="usage-meter">
+          <div class="meter-bar">
+            <div class="meter-fill" style="width: 32%"></div>
+          </div>
+          <span class="usage-text">32 / 100 units</span>
+        </div>
+        <p class="status-detail">🟢 Within daily limits</p>
+      </div>
+
+      <div class="status-card">
+        <h3>🔍 Last Operation</h3>
+        <div class="last-operation">
+          <p><strong>Niche Discovery:</strong> "sustainable living"</p>
+          <p><strong>Cost:</strong> 3.2 units</p>
+          <p><strong>Time:</strong> 14:23 UTC</p>
+          <p class="status-detail">✅ Successful</p>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <h3>⚙️ Daily Limits</h3>
+        <div class="limits-info">
+          <p><strong>Max daily units:</strong> 100</p>
+          <p><strong>Per-query limit:</strong> 10 units</p>
+          <p><strong>Concurrent ops:</strong> 3 max</p>
+          <p class="status-detail">🔒 Configured for safety</p>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <h3>📊 This Week</h3>
+        <div class="week-stats">
+          <p><strong>Monday:</strong> 78/100 units</p>
+          <p><strong>Tuesday:</strong> 45/100 units</p>
+          <p><strong>Wednesday:</strong> 32/100 units (today)</p>
+          <p class="status-detail">📉 Average: 52 units/day</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="active-operations">
+      <h2>🚀 Active Operations</h2>
+      <div class="operations-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Operation</th>
+              <th>Keyword</th>
+              <th>Status</th>
+              <th>Units Used</th>
+              <th>Started</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Content Planning</td>
+              <td>pet training tips</td>
+              <td><span class="status-active">Active</span></td>
+              <td>2.1</td>
+              <td>14:20 UTC</td>
+            </tr>
+            <tr>
+              <td>Niche Discovery</td>
+              <td>home automation</td>
+              <td><span class="status-completed">Completed</span></td>
+              <td>4.3</td>
+              <td>13:45 UTC</td>
+            </tr>
+            <tr>
+              <td>Keyword Research</td>
+              <td>sustainable products</td>
+              <td><span class="status-queued">Queued</span></td>
+              <td>0.0</td>
+              <td>Pending</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="compliance-notes">
+      <h2>🔒 Compliance & Monitoring</h2>
+      <div class="compliance-grid">
+        <div class="compliance-item">
+          <h4>✅ Automated Limits</h4>
+          <p>System automatically blocks operations exceeding daily quota (100 units)</p>
+        </div>
+        <div class="compliance-item">
+          <h4>📝 Audit Trail</h4>
+          <p>All API calls logged with timestamp, user, and operation details</p>
+        </div>
+        <div class="compliance-item">
+          <h4>🎯 Business Purpose</h4>
+          <p>API data used exclusively for internal editorial decision-making</p>
+        </div>
+        <div class="compliance-item">
+          <h4>🚫 No Resale</h4>
+          <p>Data never redistributed, resold, or made available to third parties</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Personal Keyword Research Tool</p>
+      <p><a href="index.html">Home</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <footer class="site-footer">
+    <p>🔒 Internal tool for keyword research. API usage limited and monitored. Not available for public use.</p>
+  </footer>
+</body>
+</html>

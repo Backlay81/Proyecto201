@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /
+Disallow: /demo.html
+Disallow: /discovery.html
+Disallow: /planner.html
+Disallow: /status.html
+
+# Internal tool - not for public indexing
+# Contact: jdgestiondigital@gmail.com

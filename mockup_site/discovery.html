@@ -3,137 +3,249 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Niche Discovery - Personal Research Tools</title>
+  <title>Buscar Nicho - Personal Research Tools</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <div class="logo"><a href="index.html"><img src="assets/logo-placeholder.svg" alt="logo" id="logo-img"></a></div>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="discovery.html">Niche Discovery</a></li>
-        <li><a href="planner.html">Content Planner</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="demo.html">Demo</a></li>
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <i class="fas fa-chart-line nav-icon"></i>Personal Research Tools
+      </a>
+      <ul class="navbar-nav">
+        <div class="nav-section main-nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>Inicio
+          </a>
+          <a href="discovery.html" class="nav-link active">
+            <i class="fas fa-search nav-icon"></i>Buscar Nicho
+          </a>
+          <a href="planner.html" class="nav-link">
+            <i class="fas fa-calendar-alt nav-icon"></i>Planificador Global
+          </a>
+          <a href="petplus.html" class="nav-link">
+            <i class="fas fa-project-diagram nav-icon"></i>Mis Proyectos
+          </a>
+          <a href="demo.html" class="nav-link">
+            <i class="fas fa-play-circle nav-icon"></i>Demo Pública
+          </a>
+          <a href="status.html" class="nav-link">
+            <i class="fas fa-chart-bar nav-icon"></i>Status API
+          </a>
+        </div>
+        <div class="nav-section legal-nav">
+          <a href="privacy.html" class="nav-link">
+            <i class="fas fa-shield-alt nav-icon"></i>Privacidad
+          </a>
+          <a href="terms.html" class="nav-link">
+            <i class="fas fa-file-contract nav-icon"></i>Términos
+          </a>
+        </div>
       </ul>
     </div>
   </nav>
 
-  <main class="container">
-    <h1>🔍 Niche Discovery Tool</h1>
-    <p><strong>Phase 1:</strong> Identify profitable niches using Google Ads API data for informed editorial decisions.</p>
-    <p><strong>API Usage Control:</strong> Estimated 2-5 units per analysis. Max usage: 50 units/day for discovery phase.</p>
+  <main class="container discovery-page">
+    <!-- Header Section -->
+    <div class="page-header">
+      <div class="phase-indicator">
+        <span class="phase-number">1</span>
+        <span class="phase-label">Fase 1 – Descubrimiento</span>
+      </div>
+      <h1><i class="fas fa-search"></i> Buscador de Nichos</h1>
+      <p class="page-description">Identifica nichos rentables usando datos de YouTube API y Google Trends para decisiones editoriales informadas.</p>
+      
+      <div class="api-usage-notice">
+        <i class="fas fa-info-circle"></i>
+        <span><strong>API Usage:</strong> Estimado 2–6 unidades por análisis</span>
+      </div>
+    </div>
 
+    <!-- Search Section -->
     <section class="discovery-search">
-      <div class="search-box">
-        <input type="text" placeholder="Enter broad category (e.g., health, technology, pets)" disabled>
-        <button disabled>Analyze Niche Potential (mock)</button>
+      <div class="search-container">
+        <h2><i class="fas fa-search"></i> Análisis de Nicho</h2>
+        <div class="search-box">
+          <input type="text" placeholder="Ingresa categoría amplia (ej: salud, tecnología, mascotas)" class="search-input">
+          <button class="btn btn-primary search-btn">
+            <i class="fas fa-chart-line"></i>Analizar Potencial
+          </button>
+        </div>
+        <div class="search-options">
+          <label class="checkbox-option">
+            <input type="checkbox" checked>
+            <span>Incluir análisis de competencia</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" checked>
+            <span>Usar Google Trends</span>
+          </label>
+        </div>
       </div>
     </section>
 
-    <section class="discovery-table">
-      <h2>Discovered Niches - Opportunity Analysis</h2>
-      
+    <!-- Results Section -->
+    <section class="discovery-results">
       <!-- Niche Comparison Section -->
       <div class="niche-comparison">
-        <h3>Compare Top 3 Niches</h3>
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Niche/Keyword</th>
-              <th>Search Volume</th>
-              <th>Avg CPC (€)</th>
-              <th>Competition</th>
-              <th>Monetization Type</th>
-              <th>Automatable?</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="highlight-row">
-              <td><strong>Pet Care & Training</strong></td>
-              <td>45,000</td>
-              <td>1.35</td>
-              <td>Media</td>
-              <td>Ambas</td>
-              <td>Sí</td>
-              <td><a href="planner.html?niche=pets" class="btn btn-small">Plan Content</a></td>
-            </tr>
-            <tr>
-              <td>Home Automation</td>
-              <td>32,000</td>
-              <td>2.10</td>
-              <td>Alta</td>
-              <td>Solo Afiliación</td>
-              <td>No</td>
-              <td><a href="planner.html?niche=home-automation" class="btn btn-small">Plan Content</a></td>
-            </tr>
-            <tr>
-              <td>Sustainable Living</td>
-              <td>28,000</td>
-              <td>1.15</td>
-              <td>Baja</td>
-              <td>Solo Ads</td>
-              <td>Sí</td>
-              <td><a href="planner.html?niche=sustainable" class="btn btn-small">Plan Content</a></td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="api-usage-note">Estimated API usage for this operation: ~2–6 units depending on query depth.</p>
+        <h2><i class="fas fa-balance-scale"></i> Comparación de Top 3 Nichos</h2>
+        <div class="comparison-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Niche/Keyword</th>
+                <th>Views Promedio</th>
+                <th>Competencia</th>
+                <th>Monetización</th>
+                <th>Automatizable?</th>
+                <th>Opp. Score</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="recommended-row">
+                <td>
+                  <div class="niche-info">
+                    <strong>curso de criptomoneda</strong>
+                    <span class="niche-tag finance">Finanzas</span>
+                  </div>
+                </td>
+                <td>287,250</td>
+                <td><span class="competition very-high">Very High</span></td>
+                <td><span class="monetization ads-only">Solo Anuncios</span></td>
+                <td><span class="automatable no">❌ No</span></td>
+                <td><span class="score good">0.485</span></td>
+                <td><a href="planner.html?niche=criptomoneda" class="btn btn-small">→ Planificar</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="niche-info">
+                    <strong>donde invertir mis ahorros</strong>
+                    <span class="niche-tag finance">Finanzas</span>
+                  </div>
+                </td>
+                <td>255,997</td>
+                <td><span class="competition very-high">Very High</span></td>
+                <td><span class="monetization high">Muy Alto</span></td>
+                <td><span class="automatable no">❌ No</span></td>
+                <td><span class="score good">0.485</span></td>
+                <td><a href="planner.html?niche=inversion" class="btn btn-small">→ Planificar</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="niche-info">
+                    <strong>entrenar mascotas en casa</strong>
+                    <span class="niche-tag pets">Mascotas</span>
+                  </div>
+                </td>
+                <td>186,500</td>
+                <td><span class="competition medium">Medium</span></td>
+                <td><span class="monetization mixed">Mixta</span></td>
+                <td><span class="automatable yes">✅ Sí</span></td>
+                <td><span class="score excellent">0.723</span></td>
+                <td><a href="planner.html?niche=pets" class="btn btn-small">→ Planificar</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="next-step-section">
+          <div class="next-step-card">
+            <h3><i class="fas fa-arrow-right"></i> Siguiente Paso</h3>
+            <p>Selecciona un nicho para continuar al <strong>Planificador Global</strong> y generar estrategia de contenido.</p>
+            <a href="planner.html" class="btn btn-primary">
+              <i class="fas fa-calendar-alt"></i>Ir al Planificador
+            </a>
+          </div>
+        </div>
       </div>
 
-      <h3>All Discovered Opportunities</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Niche</th>
-            <th>Avg Volume</th>
-            <th>Avg CPC (€)</th>
-            <th>Competition</th>
-            <th>Opportunity Score</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Pet Care & Training</td>
-            <td>45,000</td>
-            <td>1.35</td>
-            <td>Media</td>
-            <td>0.823</td>
-            <td><a href="planner.html?niche=pets" class="btn">Plan Content</a></td>
-          </tr>
-          <tr>
-            <td>Home Automation</td>
-            <td>32,000</td>
-            <td>2.10</td>
-            <td>Alta</td>
-            <td>0.745</td>
-            <td><a href="planner.html?niche=home-automation" class="btn">Plan Content</a></td>
-          </tr>
-          <tr>
-            <td>Personal Finance</td>
-            <td>78,000</td>
-            <td>1.85</td>
-            <td>Alta</td>
-            <td>0.698</td>
-            <td><a href="planner.html?niche=finance" class="btn">Plan Content</a></td>
-          </tr>
-          <tr>
-            <td>Sustainable Living</td>
-            <td>28,000</td>
-            <td>1.15</td>
-            <td>Baja</td>
-            <td>0.890</td>
-            <td><a href="planner.html?niche=sustainable" class="btn">Plan Content</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- Additional Analysis Section -->
+      <div class="additional-analysis">
+        <h2><i class="fas fa-chart-area"></i> Análisis Detallado</h2>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <h3>Histórico de Tendencias</h3>
+            <p>Análisis de 12 meses usando Google Trends</p>
+            <div class="trend-indicator">
+              <span class="trend up">📈 +23% últimos 3 meses</span>
+            </div>
+          </div>
+          <div class="analysis-card">
+            <h3>Competencia YouTube</h3>
+            <p>Análisis de canales competidores</p>
+            <div class="competition-level">
+              <span class="level medium">Competencia: Media-Alta</span>
+            </div>
+          </div>
+          <div class="analysis-card">
+            <h3>Potencial Monetización</h3>
+            <p>Estimación basada en CPC y volumen</p>
+            <div class="monetization-potential">
+              <span class="potential high">€2,400-4,800/mes estimado</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="discovery-actions">
-        <a href="niche_analysis_report.csv" download class="btn btn-primary">Download Full Analysis (CSV)</a>
-        <a href="niche_opportunities.md" download class="btn">Download Report (MD)</a>
+      <!-- Export Section -->
+      <div class="export-section">
+        <h3><i class="fas fa-download"></i> Exportar Análisis</h3>
+        <div class="export-options">
+          <a href="niche_analysis_report.csv" download class="btn btn-outline">
+            <i class="fas fa-file-csv"></i>Descargar CSV
+          </a>
+          <a href="niche_opportunities.md" download class="btn btn-outline">
+            <i class="fas fa-file-alt"></i>Descargar MD
+          </a>
+          <a href="trends_data.json" download class="btn btn-outline">
+            <i class="fas fa-file-code"></i>Datos JSON
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Personal Research Tools</h4>
+          <p>Herramienta interna para investigación de contenido</p>
+        </div>
+        <div class="footer-section">
+          <h5>Enlaces</h5>
+          <ul>
+            <li><a href="discovery.html">Buscar Nichos</a></li>
+            <li><a href="planner.html">Planificador</a></li>
+            <li><a href="status.html">Status API</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Política de Privacidad</a></li>
+            <li><a href="terms.html">Términos de Uso</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h5>Compliance</h5>
+          <p><i class="fas fa-shield-alt"></i> Cumple con políticas de Google APIs</p>
+          <p><i class="fas fa-lock"></i> Uso personal únicamente</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Personal Research Tools. Herramienta interna de investigación.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
       </div>
     </section>
 

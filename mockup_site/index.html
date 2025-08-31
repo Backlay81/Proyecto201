@@ -3,27 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keyword Research Automation Tool</title>
+    <title>Personal Research Tools - Inicio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logo-placeholder.svg" alt="Keyword Research Tool Logo" id="logo-img">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#workflow" class="nav-link">Workflow</a></li>
-                <li><a href="discovery.html" class="nav-link">Niche Discovery</a></li>
-                <li><a href="planner.html" class="nav-link">Content Planner</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+    <nav class="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-chart-line nav-icon"></i>Personal Research Tools
+            </a>
+            <ul class="navbar-nav">
+                <div class="nav-section main-nav">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home nav-icon"></i>Inicio
+                    </a>
+                    <a href="discovery.html" class="nav-link">
+                        <i class="fas fa-search nav-icon"></i>Buscar Nicho
+                    </a>
+                    <a href="planner.html" class="nav-link">
+                        <i class="fas fa-calendar-alt nav-icon"></i>Planificador Global
+                    </a>
+                    <a href="petplus.html" class="nav-link">
+                        <i class="fas fa-project-diagram nav-icon"></i>Mis Proyectos
+                    </a>
+                    <a href="demo.html" class="nav-link">
+                        <i class="fas fa-play-circle nav-icon"></i>Demo Pública
+                    </a>
+                    <a href="status.html" class="nav-link">
+                        <i class="fas fa-chart-bar nav-icon"></i>Status API
+                    </a>
+                </div>
+                <div class="nav-section legal-nav">
+                    <a href="privacy.html" class="nav-link">
+                        <i class="fas fa-shield-alt nav-icon"></i>Privacidad
+                    </a>
+                    <a href="terms.html" class="nav-link">
+                        <i class="fas fa-file-contract nav-icon"></i>Términos
+                    </a>
+                </div>
             </ul>
         </div>
     </nav>
@@ -32,50 +52,170 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Keyword Research Tool</h1>
-                <p>Automation of keyword research processes to create more effective content</p>
-                <a href="#features" class="btn btn-primary">Learn More</a>
-            </div>
-            <div class="hero-image">
-                <img src="assets/dashboard-mockup.svg" alt="Tool Dashboard Preview">
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-search"></i>
-                    <h3>Personal Keyword Discovery</h3>
-                    <p>Discover relevant keywords for my content using Google Ads API data.</p>
+                <h1>Sistema de Análisis de Nichos</h1>
+                <p class="hero-subtitle">Herramienta interna para investigación de keywords y planificación de contenido usando APIs de Google de forma responsable</p>
+                <div class="hero-buttons">
+                    <a href="discovery.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>Comenzar análisis de nicho
+                    </a>
+                    <a href="demo.html" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>Ver demo
+                    </a>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Smart Analysis Tools</h3>
-                    <p>Analyze search volumes and competition to optimize my content strategy.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-file-export"></i>
-                    <h3>Flexible Data Export</h3>
-                    <p>Export results in multiple formats for my content planning and analysis.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-lock"></i>
-                    <h3>Private & Secure</h3>
-                    <p>My data and research stay completely private and secure.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">202</span>
+                        <span class="stat-label">API units usadas hoy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">48</span>
+                        <span class="stat-label">Análisis restantes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">🟢</span>
+                        <span class="stat-label">Sistema operativo</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Workflow Section -->
-    <section id="workflow" class="workflow">
+    <!-- Workflow Steps -->
+    <section class="workflow-steps">
         <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="workflow-steps">
+            <h2 class="section-title">Flujo de trabajo - 6 pasos</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <img src="assets/step1-mockup.svg" alt="Paso 1" class="step-image">
+                    <h3>Descubrimiento</h3>
+                    <p>Búsqueda inicial de nichos usando Google Trends y YouTube API</p>
+                    <span class="api-usage">2-6 API units</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <img src="assets/step2-mockup.svg" alt="Paso 2" class="step-image">
+                    <h3>Análisis competencia</h3>
+                    <p>Evaluación de competidores y oportunidades del mercado</p>
+                    <span class="api-usage">1-3 API units</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <img src="assets/step3-mockup.svg" alt="Paso 3" class="step-image">
+                    <h3>Planificación</h3>
+                    <p>Creación de calendario de contenidos y estrategia</p>
+                    <span class="api-usage">Sin uso API</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <img src="assets/step4-mockup.svg" alt="Paso 4" class="step-image">
+                    <h3>Validación</h3>
+                    <p>Verificación de datos y ajustes del plan</p>
+                    <span class="api-usage">1-2 API units</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <img src="assets/step5-mockup.svg" alt="Paso 5" class="step-image">
+                    <h3>Exportación</h3>
+                    <p>Generación de reportes y archivos para implementación</p>
+                    <span class="api-usage">Sin uso API</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <img src="assets/step6-mockup.svg" alt="Paso 6" class="step-image">
+                    <h3>Monitoreo</h3>
+                    <p>Seguimiento de uso de APIs y rendimiento</p>
+                    <span class="api-usage">Tracking continuo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2>Acerca del Sistema</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Herramienta de Investigación Personal</h3>
+                        <p>Este sistema está diseñado como una herramienta interna para automatizar procesos de investigación de keywords y planificación de contenido.</p>
+                        
+                        <h4>Uso Responsable de APIs</h4>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Límites estrictos de uso diario (100 unidades)</li>
+                            <li><i class="fas fa-check"></i> Tracking transparente de consumo</li>
+                            <li><i class="fas fa-check"></i> Datos utilizados solo para investigación personal</li>
+                            <li><i class="fas fa-check"></i> Sin redistribución comercial de datos</li>
+                        </ul>
+
+                        <div class="compliance-note">
+                            <h4><i class="fas fa-shield-alt"></i> Cumplimiento</h4>
+                            <p>Esta herramienta opera bajo las políticas de uso de Google APIs y está diseñada para uso personal de investigación, no comercial.</p>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <h3>Estado Actual</h3>
+                            <div class="current-status">
+                                <div class="status-item">
+                                    <span class="status-label">APIs activas:</span>
+                                    <span class="status-value">3</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Uso hoy:</span>
+                                    <span class="status-value">202/10,000</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Estado:</span>
+                                    <span class="status-value success">🟢 Operativo</span>
+                                </div>
+                            </div>
+                            <a href="status.html" class="btn btn-outline">Ver dashboard completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Personal Research Tools</h4>
+                    <p>Herramienta interna para investigación de contenido</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Enlaces</h5>
+                    <ul>
+                        <li><a href="discovery.html">Buscar Nichos</a></li>
+                        <li><a href="planner.html">Planificador</a></li>
+                        <li><a href="status.html">Status API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="privacy.html">Política de Privacidad</a></li>
+                        <li><a href="terms.html">Términos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Compliance</h5>
+                    <p><i class="fas fa-shield-alt"></i> Cumple con políticas de Google APIs</p>
+                    <p><i class="fas fa-lock"></i> Uso personal únicamente</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Personal Research Tools. Herramienta interna de investigación.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Input Seed Keywords</h3>
