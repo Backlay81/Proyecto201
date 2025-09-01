@@ -68,6 +68,38 @@ MEDIAN_MIN = MEDIAN_VIEWS_THRESHOLD
 PCT75_MIN = P75_VIEWS_THRESHOLD
 
 
+# TODO: Decisión suave + score combinado (mediana/P75)
+def decide_niche_soft(median_views: float, pct75_views: float,
+                      median_min: int, p75_min: int) -> tuple[str, str, float]:
+    """
+    Devuelve (decision, reason, score_0_100).
+    Regla:
+      - RECOMENDADO si median >= median_min y p75 >= p75_min
+      - EVALUAR si cumple al menos uno de los dos o ambos >= 60% del umbral
+      - DESCARTAR si ambos por debajo del 60% del umbral
+    Score (0-100): media de dos ratios recortados a 1, ponderada 50/50.
+    """
+    # ratios recortados [0,1]
+    r_med = max(0.0, min(1.0, median_views / float(median_min if median_min else 1)))
+    r_p75 = max(0.0, min(1.0, pct75_views / float(p75_min if p75_min else 1)))
+    score = round((r_med + r_p75) / 2 * 100, 1)
+
+    if median_views >= median_min and pct75_views >= p75_min:
+        decision = "RECOMENDADO"
+        reason = (f"Mediana {median_views:,.0f} ≥ {median_min} y "
+                  f"P75 {pct75_views:,.0f} ≥ {p75_min}")
+    elif (median_views >= median_min or pct75_views >= p75_min) or \
+         (median_views >= 0.6*median_min and pct75_views >= 0.6*p75_min):
+        decision = "EVALUAR"
+        reason = (f"Parcial: Mediana {median_views:,.0f} vs {median_min}, "
+                  f"P75 {pct75_views:,.0f} vs {p75_min}")
+    else:
+        decision = "DESCARTAR"
+        reason = (f"Por debajo: Mediana {median_views:,.0f} < {int(0.6*median_min)}* "
+                  f"y P75 {pct75_views:,.0f} < {int(0.6*p75_min)}* (zona baja)")
+    return decision, reason, score
+
+
 def decide_niche(median_views: float, pct75_views: float) -> tuple[str, str]:
     """
     Devuelve (decision, reason)
@@ -212,15 +244,19 @@ def analizar_titulos_monetizacion(videos):
         if any(word in title for word in anuncios_words):
             anuncios_count += 1
     
+    # TODO: Arreglar ratio monetizable para no superar 100%
     total_monetizables = afiliacion_count + anuncios_count
+    
+    # Clamp to avoid counting videos twice
+    total_monetizables = min(total_monetizables, len(videos))
     
     return {
         'videos_afiliacion': afiliacion_count,
         'videos_anuncios': anuncios_count,
         'videos_monetizables': total_monetizables,
-        'porcentaje_afiliacion': (afiliacion_count / len(videos)) * 100,
-        'porcentaje_anuncios': (anuncios_count / len(videos)) * 100,
-        'porcentaje_monetizables': (total_monetizables / len(videos)) * 100
+        'porcentaje_afiliacion': round((afiliacion_count / max(1, len(videos))) * 100, 1),
+        'porcentaje_anuncios': round((anuncios_count / max(1, len(videos))) * 100, 1),
+        'porcentaje_monetizables': round((total_monetizables / max(1, len(videos))) * 100, 1)
     }
 
 
@@ -554,9 +590,9 @@ def compute_median_and_percentile(values, percentile=75):
     return median, pct_val
 
 
-def analyze_niche_with_tracking(keyword, descartados_list, region_code=None, relevance_language=None):
+def analyze_niche_with_tracking(keyword, descartados_list, region_code=None, relevance_language=None, median_min=None, p75_min=None):
     """
-    Analiza un nicho específico en YouTube con filtros de calidad y registra descartados
+    Analiza un nicho específico en YouTube con métricas siempre visibles y decisión suave
     """
     print(f"🔍 Analizando nicho: {keyword}")
     
@@ -567,78 +603,49 @@ def analyze_niche_with_tracking(keyword, descartados_list, region_code=None, rel
         result = {
             'keyword': keyword,
             'region': region_code or 'N/A',
-            'video_count': 0,
+            'results_count': 0,
             'avg_views': 0,
             'median_views': 0,
             'pct75_views': 0,
             'max_views': 0,
-            'total_views': 0,
+            'decision': 'DESCARTAR',
+            'reason': 'Sin videos encontrados',
+            'score_base': 0.0,
+            'score_refinado': 0.0,
             'monetizacion': 'N/A',
             'automatizable': False,
             'automatizable_count': 0,
-            'score_monetizacion': 0,
-            'potencial_total_refinado': 0,
-            'decision': 'DESCARTADO',
-            'reason': 'Sin videos encontrados'
+            'monetizable_ratio_pct': 0.0,
+            'riesgo_saturacion': 'N/A'
         }
-        descartados_list.append({
-            'keyword': keyword,
-            'region': region_code or 'N/A',
-            'motivo_descarte': 'Sin videos encontrados',
-            'avg_views': 0,
-            'tipo_monetizacion': 'N/A',
-            'score_refinado': 0,
-            'decision': 'DESCARTADO',
-            'reason': 'Sin videos encontrados'
-        })
+        descartados_list.append(result.copy())
         return result
     
-    # Calcular métricas básicas
+    # TODO: Mostrar siempre métricas y luego la decisión (sin early return por descarte)
+    count = len(videos)
     total_views = sum(v['viewCount'] for v in videos)
-    avg_views = total_views / len(videos)
-    # Mediana y percentil 75
+    avg_views = total_views / count
     views_list = [v['viewCount'] for v in videos]
     median_views, pct75_views = compute_median_and_percentile(views_list, 75)
     max_views = max(v['viewCount'] for v in videos)
     
-    # Obtener monetización para registro
+    # Usar umbrales pasados o defaults globales
+    actual_median_min = median_min if median_min is not None else MEDIAN_MIN
+    actual_p75_min = p75_min if p75_min is not None else PCT75_MIN
+    
+    # imprimir bloque con métricas SIEMPRE
+    print(f"📊 Resultados para '{keyword}':")
+    print(f"   Videos encontrados: {count}")
+    print(f"   Views promedio: {avg_views:,.0f}")
+    print(f"   Mediana views: {median_views:,.0f}")
+    print(f"   Percentil 75 views: {pct75_views:,.0f}")
+    print(f"   Views máximas: {max_views:,.0f}")
+    
+    # decisión suave
+    decision, reason, base_score = decide_niche_soft(median_views, pct75_views, actual_median_min, actual_p75_min)
+    
+    # Análisis adicional para score refinado
     monetizacion_keyword = clasificar_monetizacion(keyword)
-    
-    # ✅ 1. Filtro por views promedio bajos
-    if avg_views < 10000:
-        print(f"⚠️ Nicho '{keyword}' descartado: views promedio demasiado bajos ({avg_views:,.0f})")
-        result = {
-            'keyword': keyword,
-                'region': region_code or 'N/A',
-            'video_count': len(videos),
-            'avg_views': avg_views,
-            'median_views': median_views,
-            'pct75_views': pct75_views,
-            'max_views': max_views,
-            'total_views': total_views,
-            'monetizacion': monetizacion_keyword,
-            'automatizable': False,
-            'automatizable_count': 0,
-            'score_monetizacion': 0,
-            'potencial_total_refinado': 'N/A',
-            'decision': 'DESCARTADO',
-            'reason': 'avg_views < 10000'
-        }
-        descartados_list.append({
-            'keyword': keyword,
-                'region': region_code or 'N/A',
-            'motivo_descarte': 'Views promedio bajos',
-            'avg_views': int(avg_views),
-            'median_views': int(median_views),
-            'pct75_views': int(pct75_views),
-            'tipo_monetizacion': monetizacion_keyword,
-            'score_refinado': 'N/A - No calculado',
-            'decision': 'DESCARTADO',
-            'reason': 'avg_views < 10000'
-        })
-        return result
-    
-    # Continuar con el análisis completo
     sorted_videos = sorted(videos, key=lambda x: x['viewCount'], reverse=True)[:5]
     analisis_titulos = analizar_titulos_monetizacion(videos)
     
@@ -646,49 +653,38 @@ def analyze_niche_with_tracking(keyword, descartados_list, region_code=None, rel
     automatizable_count = sum([is_automatizable(v['title']) for v in sorted_videos])
     automatizable = automatizable_count >= 3
     
-    # Score refinado (la monetización ahora es solo un modificador, no un filtro duro)
-    potencial_total_refinado = calcular_potencial_total_refinado(
-        avg_views, 
-        monetizacion_keyword, 
-        automatizable,
-        analisis_titulos['porcentaje_monetizables']
-    )
+    # monetización/automatización ajustan SOLO el score, no la 'decision' base
+    score_refinado = base_score
     
-    # ✅ 2. Filtro por score refinado mínimo
-    if potencial_total_refinado < 50:
-        print(f"❌ Nicho '{keyword}' eliminado: score demasiado bajo ({potencial_total_refinado})")
-        result = {
-            'keyword': keyword,
-                'region': region_code or 'N/A',
-            'video_count': len(videos),
-            'avg_views': avg_views,
-            'median_views': median_views,
-            'pct75_views': pct75_views,
-            'max_views': max_views,
-            'total_views': total_views,
-            'monetizacion': monetizacion_keyword,
-            'automatizable': automatizable,
-            'automatizable_count': automatizable_count,
-            'score_monetizacion': calcular_score_monetizacion(monetizacion_keyword, analisis_titulos),
-            'potencial_total_refinado': potencial_total_refinado,
-            'decision': 'DESCARTADO',
-            'reason': 'potencial_total_refinado < 50'
-        }
-        descartados_list.append({
-            'keyword': keyword,
-                'region': region_code or 'N/A',
-            'motivo_descarte': 'Score refinado bajo',
-            'avg_views': int(avg_views),
-            'median_views': int(median_views),
-            'pct75_views': int(pct75_views),
-            'tipo_monetizacion': monetizacion_keyword,
-            'score_refinado': potencial_total_refinado,
-            'decision': 'DESCARTADO',
-            'reason': 'potencial_total_refinado < 50'
-        })
-        return result
+    # Aplicar modificadores de monetización
+    if monetizacion_keyword == "Afiliación + Anuncios":
+        score_refinado += 10
+    elif monetizacion_keyword == "Solo Anuncios":
+        score_refinado += 5
+    elif monetizacion_keyword == "Solo Afiliación":
+        score_refinado += 3
+    else:  # "Difícil Monetizar"
+        score_refinado -= 5
     
-    # ✅ 4. Semáforo de saturación (riesgo visual)
+    # Modificador por automatización
+    if automatizable:
+        score_refinado += 5
+    else:
+        score_refinado -= 2
+    
+    # TODO: Relajar el umbral mínimo de "videos monetizables":
+    monetizable_ratio_pct = analisis_titulos['porcentaje_monetizables']
+    if monetizable_ratio_pct < 10:
+        score_refinado -= 10  # penalizar score (-10), pero NO descartar
+    elif 10 <= monetizable_ratio_pct <= 30:
+        pass  # neutro
+    else:
+        score_refinado += 10  # bonificar score (+10)
+    
+    # Clamp score refinado
+    score_refinado = max(0.0, min(100.0, score_refinado))
+    
+    # Semáforo de saturación (riesgo visual)
     saturacion_ratio = avg_views / max_views
     if saturacion_ratio >= 0.8:
         riesgo_saturacion_visual = "🟢 Bajo"
@@ -697,47 +693,53 @@ def analyze_niche_with_tracking(keyword, descartados_list, region_code=None, rel
     else:
         riesgo_saturacion_visual = "🔴 Alto"
     
-    # Mostrar resultados
-    print(f"📊 Resultados para '{keyword}':")
-    print(f"   Videos encontrados: {len(videos)}")
-    print(f"   Views promedio: {avg_views:,.0f}")
-    print(f"   Mediana views: {median_views:,.0f}")
-    print(f"   Percentil 75 views: {pct75_views:,.0f}")
-    print(f"   Views máximas: {max_views:,.0f}")
     print(f"   💰 Monetización: {monetizacion_keyword}")
     print(f"   🤖 Automatizable: {'✅ Sí' if automatizable else '❌ No'} ({automatizable_count}/5 videos)")
     print(f"   ⚠️ Riesgo saturación: {riesgo_saturacion_visual}")
-    print(f"   📈 Videos monetizables: {analisis_titulos['porcentaje_monetizables']:.1f}%")
-    print(f"   🎯 Potencial REFINADO: {potencial_total_refinado}/100")
+    print(f"   📈 Videos monetizables: {monetizable_ratio_pct:.1f}%")
+    print(f"   🎯 Decisión: {decision} | {reason}")
+    print(f"   🧮 Score base: {base_score:.1f} | Score refinado: {score_refinado:.1f}")
     
     # Mostrar top 5 videos con clasificación
     print(f"\n🏆 Top 5 videos más populares:")
     for i, video in enumerate(sorted_videos, 1):
         auto_icon = "🤖" if is_automatizable(video['title']) else "👤"
-    print(f"   {i}. {auto_icon} {video['title'][:60]}... - {video['viewCount']:,} views")
+        print(f"   {i}. {auto_icon} {video['title'][:60]}... - {video['viewCount']:,} views")
     
-    decision, reason = decide_niche(median_views, pct75_views)
+    print("----------------------------------------------------------------------")
 
-    return {
-        'keyword': keyword,
-        'region': region_code or 'N/A',
-        'video_count': len(videos),
-        'avg_views': avg_views,
-        'median_views': median_views,
-        'pct75_views': pct75_views,
-        'max_views': max_views,
+    # TODO: Incluir métricas aun si 'DESCARTAR'
+    result = {
+        "keyword": keyword,
+        "region": region_code or 'N/A',
+        "results_count": count,
+        "avg_views": int(avg_views),
+        "median_views": int(median_views),
+        "pct75_views": int(pct75_views),
+        "max_views": int(max_views),
+        "decision": decision,
+        "reason": reason,
+        "score_base": base_score,
+        "score_refinado": score_refinado,
+        "monetizacion": monetizacion_keyword,
+        "automatizable": automatizable,
+        "automatizable_count": automatizable_count,
+        "monetizable_ratio_pct": monetizable_ratio_pct,
+        "riesgo_saturacion": riesgo_saturacion_visual,
+        # Legacy fields for compatibility
+        'video_count': count,
         'total_views': total_views,
         'top_videos': sorted_videos,
-        'monetizacion': monetizacion_keyword,
-        'automatizable': automatizable,
-        'automatizable_count': automatizable_count,
-        'riesgo_saturacion': riesgo_saturacion_visual,
         'analisis_titulos': analisis_titulos,
         'score_monetizacion': calcular_score_monetizacion(monetizacion_keyword, analisis_titulos),
-        'potencial_total_refinado': potencial_total_refinado,
-        'decision': decision,
-        'reason': reason
+        'potencial_total_refinado': score_refinado
     }
+    
+    # Agregar a lista de descartados si es necesario
+    if decision == 'DESCARTAR':
+        descartados_list.append(result.copy())
+    
+    return result
 
 
 def analyze_niche(keyword, region_code=None, relevance_language=None):
@@ -1218,10 +1220,15 @@ def main():
     parser.add_argument('--publish-dir', default=None, help='Copiar resultados y generar MD en la carpeta indicada')
     args = parser.parse_args()
 
-    # Aplicar umbrales por región por defecto (si el usuario no pasa valores)
+    # TODO: Ajustar defaults por región:
+    # ES: MEDIAN_MIN=5000, P75_MIN=20000 (igual)
+    # US: MEDIAN_MIN=10000, P75_MIN=30000  # antes 40000
+    MEDIAN_DEFAULTS = {"ES": 5000, "US": 10000}
+    P75_DEFAULTS = {"ES": 20000, "US": 30000}
+    
     region_defaults = {
-        'ES': {'median': 5000, 'pct75': 20000},
-        'US': {'median': 10000, 'pct75': 40000}
+        'ES': {'median': MEDIAN_DEFAULTS["ES"], 'pct75': P75_DEFAULTS["ES"]},
+        'US': {'median': MEDIAN_DEFAULTS["US"], 'pct75': P75_DEFAULTS["US"]}
     }
 
     # Validar que el usuario no haya pasado --region-code más de una vez
@@ -1290,25 +1297,37 @@ def main():
 
     results = []
     descartados_list = []  # Lista para registrar nichos descartados
+    all_results = []  # Lista para todos los resultados (incluye descartados)
 
     for keyword in keywords:
         # Pasar región y lenguaje de relevancia a las llamadas de búsqueda de YouTube
         relevance_lang = 'es' if args.lang == 'es' else 'en'
-        result = analyze_niche_with_tracking(keyword, descartados_list, region_code=args.region_code, relevance_language=relevance_lang)
-        # Solo añadir a 'results' si no fue descartado
-        if result and result.get('decision') != 'DESCARTADO':
+        result = analyze_niche_with_tracking(
+            keyword, 
+            descartados_list, 
+            region_code=args.region_code, 
+            relevance_language=relevance_lang,
+            median_min=MEDIAN_VIEWS_THRESHOLD,
+            p75_min=P75_VIEWS_THRESHOLD
+        )
+        
+        # TODO: Exportar SIEMPRE filas completas (incl. descartados) con métricas
+        all_results.append(result)
+        
+        # Solo añadir a 'results' si no fue descartado (para compatibilidad con código existente)
+        if result and result.get('decision') not in ['DESCARTADO', 'DESCARTAR']:
             results.append(result)
-        print("-" * 70)
 
     # Exportar todos los resultados en un solo archivo CSV (y opcional Parquet / separados)
     out_path = None
-    if results or descartados_list:
+    if all_results:
         print(f"\n📋 Generando informe completo...")
         print(f"   ✅ Nichos aprobados: {len(results)}")
         print(f"   ❌ Nichos descartados: {len(descartados_list)}")
+        print(f"   📊 Total analizados: {len(all_results)}")
         # Usar pandas si está disponible para exportaciones avanzadas
         try:
-            out_path = export_results_dataframe(results, descartados_list, args)
+            out_path = export_results_dataframe(all_results, [], args)  # Pasar todos los resultados, descartados lista vacía
         except Exception as e:
             print(f"⚠️ Error exportando con pandas: {e}. Usando CSV simple.")
             try:
