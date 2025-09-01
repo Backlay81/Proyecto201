@@ -11,6 +11,9 @@ pytrends>=4.9.0
 
 # Utilidades básicas
 requests>=2.31.0
+python-dotenv>=1.0.0
+pandas>=2.2.0
+pyarrow>=12.0.0
 
 # Fecha: 28/08/2025
 # Versión: 1.0 - Simplificada para compatibilidad
