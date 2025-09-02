@@ -1,0 +1,5 @@
+<!-- SVG placeholder for logo -->
+<svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="50" fill="#4285f4"/>
+  <text x="50%" y="50%" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">KeywordTool</text>
+</svg>

@@ -1,0 +1,10 @@
+# Keywords semilla para análisis de nichos web
+# Una keyword por línea
+# Las líneas que empiecen con # son comentarios
+
+# Nichos de finanzas personales
+seguros de coche baratos
+mejores tarjetas de crédito
+
+# Nichos de escritura y papelería
+plumas estilográficas

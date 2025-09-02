@@ -1,0 +1,9 @@
+<!-- SVG placeholder for dashboard mockup -->
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#f0f0f0"/>
+  <rect x="20" y="20" width="560" height="50" fill="#e0e0e0" rx="5"/>
+  <rect x="20" y="90" width="270" height="290" fill="#e0e0e0" rx="5"/>
+  <rect x="310" y="90" width="270" height="135" fill="#e0e0e0" rx="5"/>
+  <rect x="310" y="245" width="270" height="135" fill="#e0e0e0" rx="5"/>
+  <text x="300" y="200" font-family="Arial" font-size="24" fill="#333" text-anchor="middle">Dashboard Mockup</text>
+</svg>

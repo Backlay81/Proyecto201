@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Content Planner - Personal Research Tools</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <i class="fas fa-chart-line nav-icon"></i>Personal Research Tools
+      </a>
+      <ul class="navbar-nav">
+        <div class="nav-section main-nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>Home
+          </a>
+          <a href="discovery.html" class="nav-link">
+            <i class="fas fa-search nav-icon"></i>Niche Discovery
+          </a>
+          <a href="planner.html" class="nav-link active">
+            <i class="fas fa-calendar-alt nav-icon"></i>Content Planner
+          </a>
+          <a href="petplus.html" class="nav-link">
+            <i class="fas fa-project-diagram nav-icon"></i>My Projects
+          </a>
+          <a href="demo.html" class="nav-link">
+            <i class="fas fa-play-circle nav-icon"></i>Public Demo
+          </a>
+          <a href="status.html" class="nav-link">
+            <i class="fas fa-chart-bar nav-icon"></i>API Status
+          </a>
+        </div>
+        <div class="nav-section legal-nav">
+          <a href="privacy.html" class="nav-link">
+            <i class="fas fa-shield-alt nav-icon"></i>Privacy
+          </a>
+          <a href="terms.html" class="nav-link">
+            <i class="fas fa-file-contract nav-icon"></i>Terms
+          </a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>📝 Content Planner</h1>
+    <p><strong>Phase 2:</strong> Plan specific content within validated niches using targeted keyword research.</p>
+    <p><strong>API Usage Control:</strong> Limited to 5-10 searches per day per active niche. Estimated 1-2 units per query.</p>
+
+    <section class="active-niches">
+      <h2>Active Niche Websites</h2>
+      <div class="niche-grid">
+        <div class="niche-card">
+          <h3>🐾 PetPlus</h3>
+          <p>Pet care, training, and products</p>
+          <div class="niche-stats">
+            <span>Content pieces: 24</span>
+            <span>Last update: 2 days ago</span>
+          </div>
+          <a href="#petplus-planner" class="btn btn-primary">Plan Content</a>
+        </div>
+        <div class="niche-card">
+          <h3>🏠 SmartHome Hub</h3>
+          <p>Home automation and IoT</p>
+          <div class="niche-stats">
+            <span>Content pieces: 18</span>
+            <span>Last update: 5 days ago</span>
+          </div>
+          <a href="#smarthome-planner" class="btn btn-primary">Plan Content</a>
+        </div>
+        <div class="niche-card">
+          <h3>💰 FinanceFlow</h3>
+          <p>Personal finance and investment</p>
+          <div class="niche-stats">
+            <span>Content pieces: 31</span>
+            <span>Last update: 1 day ago</span>
+          </div>
+          <a href="#finance-planner" class="btn btn-primary">Plan Content</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="petplus-planner" class="niche-planner">
+      <h2>🐾 PetPlus - Content Planning</h2>
+      
+      <div class="planner-search">
+        <div class="search-box">
+          <input type="text" placeholder="Enter specific keyword (e.g., dog training, cat food)" disabled>
+          <button disabled>Find Related Keywords (mock)</button>
+        </div>
+      </div>
+
+      <div class="planner-table">
+        <h3>Related Keywords & Content Ideas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Volume</th>
+              <th>CPC (€)</th>
+              <th>Competition</th>
+              <th>Content Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>how to train puppy</td>
+              <td>22,000</td>
+              <td>1.50</td>
+              <td>Media</td>
+              <td>Step-by-step guide</td>
+              <td><span class="status-draft">Draft</span></td>
+            </tr>
+            <tr>
+              <td>best dog food for seniors</td>
+              <td>15,000</td>
+              <td>1.80</td>
+              <td>Alta</td>
+              <td>Product review</td>
+              <td><span class="status-published">Published</span></td>
+            </tr>
+            <tr>
+              <td>cat behavior problems</td>
+              <td>18,000</td>
+              <td>1.20</td>
+              <td>Baja</td>
+              <td>Problem-solution article</td>
+              <td><span class="status-planned">Planned</span></td>
+            </tr>
+            <tr>
+              <td>homemade dog treats</td>
+              <td>12,000</td>
+              <td>0.95</td>
+              <td>Baja</td>
+              <td>Recipe with video</td>
+              <td><span class="status-draft">Draft</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="planner-actions">
+          <a href="petplus_content_calendar.csv" download class="btn btn-primary">Export Content Calendar</a>
+          <a href="petplus_keywords_analysis.md" download class="btn">Export Analysis</a>
+          <button class="btn btn-draft">💾 Guardar como borrador</button>
+          <button class="btn" disabled>Send to WordPress (mock)</button>
+        </div>
+        
+        <p class="disclaimer">All content remains in draft status until manually reviewed and approved by our editorial team.</p>
+      </div>
+    </section>
+
+    <section class="planner-explanation">
+      <h2>Content Planning Workflow</h2>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Select Niche</h3>
+          <p>Choose from validated niches (discovered in Phase 1)</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Keyword Research</h3>
+          <p>Find specific long-tail keywords within the niche</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Content Planning</h3>
+          <p>Match keywords to content types and create calendar</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Export & Execute</h3>
+          <p>Export to CMS or download for manual content creation</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Personal Keyword Research Tool</p>
+      <p><a href="index.html">Home</a> | <a href="discovery.html">Niche Discovery</a> | <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <footer class="site-footer">
+    <p>🔒 Internal tool for keyword research. API usage limited and monitored. Not available for public use.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.main-navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>

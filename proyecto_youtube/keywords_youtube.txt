@@ -1,0 +1,14 @@
+# Keywords semilla para análisis de nichos YouTube
+# Una por línea, sin comillas
+# Líneas que empiecen con # son comentarios
+
+finanzas personales
+review productos tecnológicos
+cocina saludable
+fitness en casa
+viajes económicos
+marketing digital
+productos para mascotas
+desarrollo personal
+juegos indie
+música instrumental

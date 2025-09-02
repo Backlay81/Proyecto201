@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Public Demo - Personal Research Tools</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <i class="fas fa-chart-line nav-icon"></i>Personal Research Tools
+      </a>
+      <ul class="navbar-nav">
+        <div class="nav-section main-nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>Home
+          </a>
+          <a href="discovery.html" class="nav-link">
+            <i class="fas fa-search nav-icon"></i>Niche Discovery
+          </a>
+          <a href="planner.html" class="nav-link">
+            <i class="fas fa-calendar-alt nav-icon"></i>Content Planner
+          </a>
+          <a href="petplus.html" class="nav-link">
+            <i class="fas fa-project-diagram nav-icon"></i>My Projects
+          </a>
+          <a href="demo.html" class="nav-link active">
+            <i class="fas fa-play-circle nav-icon"></i>Public Demo
+          </a>
+          <a href="status.html" class="nav-link">
+            <i class="fas fa-chart-bar nav-icon"></i>API Status
+          </a>
+        </div>
+        <div class="nav-section legal-nav">
+          <a href="privacy.html" class="nav-link">
+            <i class="fas fa-shield-alt nav-icon"></i>Privacy
+          </a>
+          <a href="terms.html" class="nav-link">
+            <i class="fas fa-file-contract nav-icon"></i>Terms
+          </a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="demo-banner">🧪 This page shows a public demo using simulated data only. No API calls are executed here.</div>
+    
+    <h1>Demo (Mock Data)</h1>
+    <p><strong>Note:</strong> This demo uses simulated data for demonstration purposes only. No live API calls are made from this page.</p>
+    <p><strong>API Usage Control:</strong> Estimated API units per query: ~2. Max API usage: < 100 units/day, internally controlled.</p>
+
+    <section class="demo-search">
+      <div class="search-box">
+        <input type="text" placeholder="Enter seed keyword" id="demo-input">
+        <button onclick="simulateSearch()" id="demo-search-btn">Search (demo)</button>
+      </div>
+      <div id="loading-indicator" class="loading hidden">🔄 Loading results...</div>
+    </section>
+
+    <section class="demo-table">
+      <h2>Example analysis results</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Volume</th>
+            <th>CPC (€)</th>
+            <th>Competition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>comida para perros</td>
+            <td>32,000</td>
+            <td>1.45</td>
+            <td>Media</td>
+          </tr>
+          <tr>
+            <td>pienso sin cereales</td>
+            <td>12,000</td>
+            <td>1.95</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>juguetes para gatos</td>
+            <td>8,500</td>
+            <td>0.85</td>
+            <td>Baja</td>
+          </tr>
+          <tr>
+            <td>entrenamiento canino</td>
+            <td>18,000</td>
+            <td>1.20</td>
+            <td>Media</td>
+          </tr>
+          <tr>
+            <td>mejores snacks para perros</td>
+            <td>6,300</td>
+            <td>0.95</td>
+            <td>Media</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="demo-actions">
+        <a href="example_analysis.csv" download class="btn btn-primary">Descargar ejemplo de análisis (CSV)</a>
+        <a href="example_analysis.md" download class="btn">Descargar ejemplo de análisis (MD)</a>
+      </div>
+    </section>
+
+    <section class="demo-explanation">
+      <h2>How this maps to our workflow</h2>
+      <ul>
+        <li>Discovery: seed keyword → list of candidate keywords + CPC/volume estimates</li>
+        <li>Validation: cross-check with YouTube and trends</li>
+        <li>Action: export top keywords as CSV/MD and plan content</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script>
+    function simulateSearch() {
+      const btn = document.getElementById('demo-search-btn');
+      const loading = document.getElementById('loading-indicator');
+      const table = document.querySelector('.demo-table');
+      
+      btn.disabled = true;
+      btn.textContent = 'Searching...';
+      loading.classList.remove('hidden');
+      table.style.opacity = '0.5';
+      
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Search (demo)';
+        table.style.opacity = '1';
+        
+        // Optional: show a brief "results updated" message
+        const note = document.createElement('div');
+        note.className = 'update-note';
+        note.textContent = '✅ Demo results updated (simulated)';
+        table.insertBefore(note, table.firstChild);
+        
+        setTimeout(() => note.remove(), 3000);
+      }, 1500);
+    }
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Personal Keyword Research Tool</p>
+      <p><a href="index.html">Home</a> | <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <footer class="site-footer">
+    <p>🔒 Internal tool for keyword research. API usage limited and monitored. Not available for public use.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.main-navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Projects - Personal Research Tools</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <i class="fas fa-chart-line nav-icon"></i>Personal Research Tools
+      </a>
+      <ul class="navbar-nav">
+        <div class="nav-section main-nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>Home
+          </a>
+          <a href="discovery.html" class="nav-link">
+            <i class="fas fa-search nav-icon"></i>Niche Discovery
+          </a>
+          <a href="planner.html" class="nav-link">
+            <i class="fas fa-calendar-alt nav-icon"></i>Content Planner
+          </a>
+          <a href="petplus.html" class="nav-link active">
+            <i class="fas fa-project-diagram nav-icon"></i>My Projects
+          </a>
+          <a href="demo.html" class="nav-link">
+            <i class="fas fa-play-circle nav-icon"></i>Public Demo
+          </a>
+          <a href="status.html" class="nav-link">
+            <i class="fas fa-chart-bar nav-icon"></i>API Status
+          </a>
+        </div>
+        <div class="nav-section legal-nav">
+          <a href="privacy.html" class="nav-link">
+            <i class="fas fa-shield-alt nav-icon"></i>Privacy
+          </a>
+          <a href="terms.html" class="nav-link">
+            <i class="fas fa-file-contract nav-icon"></i>Terms
+          </a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>PetPlus - Niche Content Planner</h1>
+    <p><strong>Internal tool for PetPlus niche:</strong> This page simulates content planning within a specific niche (pets). It uses limited, controlled API calls for related keyword research.</p>
+    <p><strong>API Usage Control:</strong> Limited to 5-10 internal searches per day per niche. Estimated units: ~1-2 per query.</p>
+
+    <section class="niche-search">
+      <div class="search-box">
+        <input type="text" placeholder="Enter niche keyword (e.g., dog food)" disabled>
+        <button disabled>Search Related (mock)</button>
+      </div>
+    </section>
+
+    <section class="niche-table">
+      <h2>Related Keywords for PetPlus Niche</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Volume</th>
+            <th>CPC (€)</th>
+            <th>Competition</th>
+            <th>Content Idea</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>comida para perros casera</td>
+            <td>15,000</td>
+            <td>1.20</td>
+            <td>Media</td>
+            <td>Recipe article</td>
+          </tr>
+          <tr>
+            <td>mejores juguetes para gatos</td>
+            <td>9,000</td>
+            <td>0.90</td>
+            <td>Baja</td>
+            <td>Product review</td>
+          </tr>
+          <tr>
+            <td>entrenamiento de cachorros</td>
+            <td>22,000</td>
+            <td>1.50</td>
+            <td>Alta</td>
+            <td>Step-by-step guide</td>
+          </tr>
+          <tr>
+            <td>salud veterinaria mascotas</td>
+            <td>18,000</td>
+            <td>2.10</td>
+            <td>Alta</td>
+            <td>Health tips</td>
+          </tr>
+          <tr>
+            <td>adopción de animales</td>
+            <td>12,000</td>
+            <td>0.75</td>
+            <td>Baja</td>
+            <td>Local resources</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="niche-actions">
+        <a href="petplus_content_plan.md" download class="btn btn-primary">Download Content Plan (MD)</a>
+        <a href="petplus_keywords.csv" download class="btn">Download Keywords (CSV)</a>
+      </div>
+    </section>
+
+    <section class="niche-explanation">
+      <h2>How this works in practice</h2>
+      <ul>
+        <li>Input: niche seed (e.g., "pets")</li>
+        <li>API call: limited related keywords search</li>
+        <li>Output: content ideas + export for planning</li>
+        <li>Control: max 10 queries/day per niche to manage API costs</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Personal Keyword Research Tool</p>
+      <p><a href="index.html">Home</a> | <a href="demo.html">Demo</a> | <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.main-navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>

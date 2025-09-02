@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Privacy - Personal Research Tools</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <i class="fas fa-chart-line nav-icon"></i>Personal Research Tools
+      </a>
+      <ul class="navbar-nav">
+        <div class="nav-section main-nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>Home
+          </a>
+          <a href="discovery.html" class="nav-link">
+            <i class="fas fa-search nav-icon"></i>Niche Discovery
+          </a>
+          <a href="planner.html" class="nav-link">
+            <i class="fas fa-calendar-alt nav-icon"></i>Content Planner
+          </a>
+          <a href="petplus.html" class="nav-link">
+            <i class="fas fa-project-diagram nav-icon"></i>My Projects
+          </a>
+          <a href="demo.html" class="nav-link">
+            <i class="fas fa-play-circle nav-icon"></i>Public Demo
+          </a>
+          <a href="status.html" class="nav-link">
+            <i class="fas fa-chart-bar nav-icon"></i>API Status
+          </a>
+        </div>
+        <div class="nav-section legal-nav">
+          <a href="privacy.html" class="nav-link active">
+            <i class="fas fa-shield-alt nav-icon"></i>Privacy
+          </a>
+          <a href="terms.html" class="nav-link">
+            <i class="fas fa-file-contract nav-icon"></i>Terms
+          </a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Privacy & Data Use</h1>
+    <p>This project is for internal research purposes only. No user data is collected via this public website and no interactive data is stored.</p>
+    <h2>Data sources</h2>
+    <p>The system uses the Google Ads API and other public sources for research. All calls to Google APIs are executed from our backend servers and API keys are never exposed in client-side code.</p>
+    <h2>Data retention</h2>
+    <p>Research outputs used internally may be stored as markdown or CSV files for up to 48 hours and then archived; no personal user data is retained.</p>
+    <h2>Contact</h2>
+    <p>For questions about privacy or data use, contact: <a href="mailto:jdgestiondigital@gmail.com">jdgestiondigital@gmail.com</a></p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Personal Keyword Research Tool</p>
+      <p><a href="index.html">Home</a> | <a href="demo.html">Demo</a></p>
+    </div>
+  </footer>
+
+  <footer class="site-footer">
+    <p>🔒 Internal tool for keyword research. API usage limited and monitored. Not available for public use.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.main-navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
