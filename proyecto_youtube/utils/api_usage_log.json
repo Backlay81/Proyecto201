@@ -1,9 +1,9 @@
 {
   "current_date": "2025-09-02",
   "daily_usage": {
-    "youtube_units": 2720,
+    "youtube_units": 2821,
     "trends_requests": 15,
-    "total_requests": 62
+    "total_requests": 64
   },
   "daily_log": [
     {
@@ -501,6 +501,22 @@
       "units": 0,
       "keyword": "youtube_trend_review productos tecnológicos",
       "details": "Google Trends query"
+    },
+    {
+      "timestamp": "2025-09-02T23:48:43.802351",
+      "api": "youtube",
+      "operation": "search",
+      "units": 100,
+      "keyword": "mejores aspiradoras 2025",
+      "details": "YouTube search.list()"
+    },
+    {
+      "timestamp": "2025-09-02T23:48:44.739839",
+      "api": "youtube",
+      "operation": "videos",
+      "units": 1,
+      "keyword": "mejores aspiradoras 2025",
+      "details": "YouTube videos.list() - 10 videos"
     }
   ],
   "historical": {

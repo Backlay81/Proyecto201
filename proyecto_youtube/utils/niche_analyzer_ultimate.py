@@ -240,67 +240,78 @@ class NicheAnalyzerUltimate:
         4. Clasificación: YES (>=2), PARTIAL (==1), NO (==0)
         5. Calcular automatizable_ratio = count_signals / 5 * 100
         """
-        # 1. Diccionarios de señales ampliados según especificaciones
-        signals_es = [
-            "tutorial", "plantilla", "guion", "script", "herramienta", "automatización", 
-            "paso a paso", "explicado fácil", "ejemplo", "review", "top", "mejores", 
-            "comparativa", "guía", "ranking", "vs", "versus", "cómo", "tips", "trucos", 
-            "mejor", "peor", "comparar", "análisis", "productos", "recomendados", 
-            "precio", "barato", "características", "modelos", "accesorios"
-        ]
-        
-        signals_en = [
-            "tutorial", "template", "script", "tool", "automation", "ai", 
-            "step by step", "explained", "example", "review", "top", "best", 
-            "comparison", "guide", "ranking", "vs", "versus", "how to", "tips", 
-            "tricks", "better", "worse", "compare", "analysis", "products", 
+        # 1. Diccionarios de señales ampliados según especificaciones (ES/EN)
+        signals_es = set([
+            "tutorial", "plantilla", "guion", "script", "herramienta", "automatización",
+            "paso a paso", "explicado fácil", "ejemplo", "review", "top", "mejores",
+            "comparativa", "guía", "ranking", "vs", "versus", "cómo", "tips", "trucos",
+            "mejor", "peor", "comparar", "análisis", "productos", "recomendados",
+            "precio", "barato", "características", "modelos", "accesorios", "manual"
+        ])
+
+        signals_en = set([
+            "tutorial", "template", "script", "tool", "automation", "ai",
+            "step by step", "explained", "example", "review", "top", "best",
+            "comparison", "guide", "ranking", "vs", "versus", "how to", "tips",
+            "tricks", "better", "worse", "compare", "analysis", "products",
             "recommended", "price", "cheap", "features", "models", "accessories"
-        ]
-        
-        # Seleccionar diccionario según región
-        signals = signals_es if geo_region == 'ES' else signals_en
-        
-        # 2-3. Analizar títulos, descripciones y tags (normalizado a minúsculas)
-        videos_with_signals = 0
+        ])
+
+        # 2. Elegir diccionario según región (si no ES asumimos EN)
+        signals_lookup = signals_es if geo_region == 'ES' else signals_en
+
+        # 3. Analizar títulos, descripciones y tags (normalizado a minúsculas)
         total_videos_analyzed = min(len(video_data_list), 5)  # Top-5 máximo
-        
-        for i, video_data in enumerate(video_data_list[:5]):  # Solo top-5
-            video_text = ""
-            
-            # Concatenar título (snippet)
-            if 'snippet' in video_data and 'title' in video_data['snippet']:
-                video_text += video_data['snippet']['title'].lower() + " "
-            
-            # Concatenar descripción (snippet)
-            if 'snippet' in video_data and 'description' in video_data['snippet']:
-                video_text += video_data['snippet']['description'].lower() + " "
-            
-            # Concatenar tags (snippet)
-            if 'snippet' in video_data and 'tags' in video_data['snippet']:
-                video_text += " ".join(video_data['snippet']['tags']).lower() + " "
-            
-            # 4. Buscar coincidencias parciales (substring) en el texto del video
-            has_signal = any(signal.lower() in video_text for signal in signals)
-            
-            if has_signal:
+        if total_videos_analyzed == 0:
+            return {
+                'automatizable_status': 'NO',
+                'automatizable_ratio': 0.0,
+                'videos_with_signals': 0,
+                'total_videos_analyzed': 0,
+                'automatizable_signals': []
+            }
+
+        videos_with_signals = 0
+        detected_signals = set()
+
+        for video_data in video_data_list[:5]:
+            # Extraer campos de snippet si existen
+            snippet = video_data.get('snippet', {}) if isinstance(video_data, dict) else {}
+            title = (snippet.get('title') or '').lower()
+            description = (snippet.get('description') or '').lower()
+            tags = [t.lower() for t in (snippet.get('tags') or [])]
+
+            text_corpus = ' '.join([title, description, ' '.join(tags)])
+
+            found_in_video = False
+            # Buscar señales (substring) en el corpus usando el diccionario seleccionado
+            for s in signals_lookup:
+                if s in text_corpus:
+                    detected_signals.add(s)
+                    found_in_video = True
+
+            if found_in_video:
                 videos_with_signals += 1
-        
-        # 5. Calcular automatizable_ratio
-        automatizable_ratio = (videos_with_signals / total_videos_analyzed * 100) if total_videos_analyzed > 0 else 0
-        
-        # 4. Clasificar según especificaciones exactas
+
+        # 4. Calcular ratio y clasificar
+        automatizable_ratio = round((videos_with_signals / total_videos_analyzed * 100), 1) if total_videos_analyzed > 0 else 0.0
+
         if videos_with_signals >= 2:
-            automatizable_status = "YES"
+            automatizable_status = 'YES'
         elif videos_with_signals == 1:
-            automatizable_status = "PARTIAL"
+            automatizable_status = 'PARTIAL'
         else:
-            automatizable_status = "NO"
-        
+            automatizable_status = 'NO'
+
+        # Señales únicas detectadas ordenadas
+        signals_list = sorted(detected_signals)
+
         return {
             'automatizable_status': automatizable_status,
-            'automatizable_ratio': round(automatizable_ratio, 1),
+            'automatizable_ratio': automatizable_ratio,
             'videos_with_signals': videos_with_signals,
-            'total_videos_analyzed': total_videos_analyzed
+            'total_videos_analyzed': total_videos_analyzed,
+            'automatizable_signals': signals_list
         }
 
     def is_automatizable(self, keyword):
@@ -416,8 +427,9 @@ class NicheAnalyzerUltimate:
                 track_youtube_videos(keyword, len(video_ids))
                 
                 # En ultra_testing hacemos una única llamada con todos los ids (ya es así)
+                # Pedir estadísticas y snippet para poder analizar títulos, descripciones y tags
                 stats_request = self.youtube.videos().list(
-                    part="statistics",
+                    part="statistics,snippet",
                     id=",".join(video_ids)
                 )
                 stats_response = stats_request.execute()
@@ -438,7 +450,8 @@ class NicheAnalyzerUltimate:
                 trend_status = self.analyze_trends_youtube(keyword, geo=geo_region)
 
                 # 🔥 NUEVO SISTEMA AVANZADO: Analizar automatización con títulos, descripciones y tags
-                automatizable_analysis = self.analyze_automatizable_advanced(search_response['items'], geo_region)
+                # Usar los items de videos.list (contienen snippet con tags y description)
+                automatizable_analysis = self.analyze_automatizable_advanced(stats_response['items'], geo_region)
 
                 # Aplicar todas las mejoras
                 niche_data = {
@@ -453,6 +466,7 @@ class NicheAnalyzerUltimate:
                     'automatizable': automatizable_analysis['automatizable_status'],  # 🔥 NUEVO: YES/PARTIAL/NO
                     'automatizable_ratio': automatizable_analysis['automatizable_ratio'],  # 🔥 NUEVO: Porcentaje
                     'videos_with_signals': automatizable_analysis['videos_with_signals'],  # 🔥 NUEVO: Count
+                    'automatizable_signals': automatizable_analysis.get('automatizable_signals', []),  # 🔥 NUEVO: Señales únicas detectadas
                     'monetization_potential': self.get_monetization_potential(keyword),
                     'tipo_monetizacion': self.clasificar_monetizacion(keyword),
                     'trend_status': trend_status,  # 🔥 NUEVO: Estado de tendencia YouTube
@@ -638,6 +652,7 @@ class NicheAnalyzerUltimate:
             # 🔥 NUEVO: Icono automatización según el nuevo sistema avanzado
             automatizable_status = niche.get('automatizable', 'NO')
             automatizable_ratio = niche.get('automatizable_ratio', 0)
+            automatizable_signals = niche.get('automatizable_signals', [])
             
             if automatizable_status == 'YES':
                 automatizable_icon = "🤖"
@@ -663,7 +678,12 @@ class NicheAnalyzerUltimate:
             print(f"   📊 Opportunity Score: {niche['final_score']:.3f}")
             print(f"   👥 Competencia: {niche['competition_level'].title()}")
             print(f"   📈 Views Promedio: {niche['avg_views']:,.0f}")
-            print(f"   {automatizable_icon} Automatizable: {automatizable_text}")  # 🔥 NUEVO: Formato mejorado con %
+            # Mostrar señales detectadas en consola si existen
+            if automatizable_signals:
+                signals_str = ', '.join(automatizable_signals)
+                print(f"   {automatizable_icon} Automatizable: {automatizable_text} | Señales: {signals_str}")
+            else:
+                print(f"   {automatizable_icon} Automatizable: {automatizable_text}")  # 🔥 NUEVO: Formato mejorado con %
             print(f"   💰 Monetización: {niche['monetization_potential']}")
             print(f"   🎯 Tipo: {niche['tipo_monetizacion']}")
             print(f"   {trend_icon} Tendencia YouTube: {trend_status}")  # 🔥 NUEVO: Mostrar tendencia
@@ -690,7 +710,7 @@ class NicheAnalyzerUltimate:
             fieldnames = [
                 'keyword', 'final_score', 'competition_level', 'avg_views',
                 'total_likes', 'total_comments', 'video_count', 'is_automatizable',
-                'automatizable', 'automatizable_ratio', 'videos_with_signals',  # 🔥 NUEVO: Campos automatización avanzada
+                'automatizable', 'automatizable_ratio', 'videos_with_signals', 'automatizable_signals',  # 🔥 NUEVO: Campos automatización avanzada
                 'monetization_potential', 'tipo_monetizacion', 'views_norm', 'engagement_norm',
                 'trend_status'  # 🔥 NUEVO: Incluir trend_status en CSV
             ]
@@ -709,6 +729,7 @@ class NicheAnalyzerUltimate:
                     'automatizable': result.get('automatizable', 'NO'),  # 🔥 NUEVO: YES/PARTIAL/NO
                     'automatizable_ratio': result.get('automatizable_ratio', 0),  # 🔥 NUEVO: Porcentaje
                     'videos_with_signals': result.get('videos_with_signals', 0),  # 🔥 NUEVO: Count
+                    'automatizable_signals': ','.join(result.get('automatizable_signals', [])),
                     'monetization_potential': result['monetization_potential'],
                     'tipo_monetizacion': result.get('tipo_monetizacion', 'No definido'),
                     'views_norm': result.get('views_norm', 0),
@@ -784,6 +805,12 @@ class NicheAnalyzerUltimate:
                 mdfile.write(f"- **{comp_icon} Competencia:** {result['competition_level'].title()}\n")
                 mdfile.write(f"- **📈 Views Promedio:** {result['avg_views']:,.0f}\n")
                 mdfile.write(f"- **{automatizable_icon} Automatizable:** {automatizable_text}\n")  # 🔥 NUEVO: Formato mejorado
+                # Añadir línea con señales detectadas
+                signals = result.get('automatizable_signals', [])
+                if signals:
+                    mdfile.write(f"- 🔑 **Señales detectadas:** {', '.join(signals)}\n")
+                else:
+                    mdfile.write(f"- 🔑 **Señales detectadas:** \n")
                 mdfile.write(f"- **{money_icon} Monetización:** {result['monetization_potential']}\n")
                 mdfile.write(f"- **🎯 Tipo:** {result.get('tipo_monetizacion', 'No definido')}\n")
                 mdfile.write(f"- **{trend_icon} Tendencia YouTube:** {trend_status}\n\n")
