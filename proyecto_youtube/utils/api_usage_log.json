@@ -1,521 +1,41 @@
 {
-  "current_date": "2025-09-02",
+  "current_date": "2025-09-06",
   "daily_usage": {
-    "youtube_units": 2821,
-    "trends_requests": 15,
-    "total_requests": 64
+    "youtube_units": 202,
+    "trends_requests": 0,
+    "total_requests": 4
   },
   "daily_log": [
     {
-      "timestamp": "2025-09-02T17:40:17.111543",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "trending_searches_spain",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T17:40:17.637202",
+      "timestamp": "2025-09-06T13:07:01.136631",
       "api": "youtube",
       "operation": "search",
       "units": 100,
-      "keyword": "finanzas personales",
+      "keyword": "5 mejores comidas para perros",
       "details": "YouTube search.list()"
     },
     {
-      "timestamp": "2025-09-02T17:40:18.384755",
+      "timestamp": "2025-09-06T13:07:01.902820",
       "api": "youtube",
       "operation": "videos",
       "units": 1,
-      "keyword": "finanzas personales",
+      "keyword": "5 mejores comidas para perros",
       "details": "YouTube videos.list() - 10 videos"
     },
     {
-      "timestamp": "2025-09-02T17:40:20.318720",
+      "timestamp": "2025-09-06T13:07:03.202530",
       "api": "youtube",
       "operation": "search",
       "units": 100,
-      "keyword": "mejores productos tecnológicos",
+      "keyword": "3 mejores comidas para gatos",
       "details": "YouTube search.list()"
     },
     {
-      "timestamp": "2025-09-02T17:40:20.793395",
+      "timestamp": "2025-09-06T13:07:03.635837",
       "api": "youtube",
       "operation": "videos",
       "units": 1,
-      "keyword": "mejores productos tecnológicos",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T17:40:21.981476",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "review criptomonedas",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T17:40:22.366910",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "review criptomonedas",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:15.395598",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "trending_searches_spain",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:15.907666",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "finanzas personales",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:16.837581",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "finanzas personales",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:18.547497",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "mejores productos tecnológicos",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:19.136317",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "mejores productos tecnológicos",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:20.235700",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "review criptomonedas",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T18:34:20.686032",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "review criptomonedas",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T22:01:18.356275",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "trending_searches_spain",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T22:01:19.254981",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "finanzas personales",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:01:20.336519",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "mejores productos tecnológicos",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:01:20.496912",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "review criptomonedas",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:07:26.515530",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "test",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:07:26.964972",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "otro",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:11:36.812737",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "alpha",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:11:37.235237",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "beta",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:27:46.505566",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "prueba1",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:27:47.267602",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "prueba1",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T22:27:48.847784",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "prueba2",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T22:27:49.194771",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "prueba2",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:03:28.283990",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "finanzas personales",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:03:29.354912",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "finanzas personales",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:03:29.459152",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_finanzas personales",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:03:35.938917",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "inversiones crypto",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:03:36.859861",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "inversiones crypto",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:03:37.487818",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_inversiones crypto",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:04:06.148339",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "inteligencia artificial",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:04:07.205876",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "inteligencia artificial",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:04:07.366644",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_inteligencia artificial",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:04:13.937259",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "marketing digital",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:04:15.109268",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "marketing digital",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:04:15.929776",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_marketing digital",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:11:14.314512",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "productividad personal",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:11:15.322676",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "productividad personal",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:11:15.391759",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_productividad personal",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:11:17.849266",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "yoga principiantes",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:11:18.413448",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "yoga principiantes",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:11:18.493534",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_yoga principiantes",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:12:28.952857",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "marketing digital",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:12:29.901436",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "marketing digital",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:12:29.994613",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_marketing digital",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:12:41.457580",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "digital marketing",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:12:42.390791",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "digital marketing",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:12:42.564512",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_digital marketing",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:14:03.385038",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "fitness",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:14:04.299525",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "fitness",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:14:04.402670",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_fitness",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:14:18.741213",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "fitness",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:14:19.653829",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "fitness",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:14:19.837915",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_fitness",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:18:45.396068",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "tutorial python",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:18:46.418635",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "tutorial python",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:18:46.518126",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_tutorial python",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:18:50.629877",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "review productos tecnológicos",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:18:51.019050",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "review productos tecnológicos",
-      "details": "YouTube videos.list() - 10 videos"
-    },
-    {
-      "timestamp": "2025-09-02T23:18:51.215670",
-      "api": "trends",
-      "operation": "trend_query",
-      "units": 0,
-      "keyword": "youtube_trend_review productos tecnológicos",
-      "details": "Google Trends query"
-    },
-    {
-      "timestamp": "2025-09-02T23:48:43.802351",
-      "api": "youtube",
-      "operation": "search",
-      "units": 100,
-      "keyword": "mejores aspiradoras 2025",
-      "details": "YouTube search.list()"
-    },
-    {
-      "timestamp": "2025-09-02T23:48:44.739839",
-      "api": "youtube",
-      "operation": "videos",
-      "units": 1,
-      "keyword": "mejores aspiradoras 2025",
+      "keyword": "3 mejores comidas para gatos",
       "details": "YouTube videos.list() - 10 videos"
     }
   ],
@@ -535,6 +55,14 @@
         "total_requests": 4
       },
       "total_requests": 4
+    },
+    "2025-09-02": {
+      "daily_usage": {
+        "youtube_units": 2821,
+        "trends_requests": 15,
+        "total_requests": 64
+      },
+      "total_requests": 64
     }
   }
 }

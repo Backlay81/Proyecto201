@@ -1,0 +1,21 @@
+# Informe de nicho - {{ keyword }}
+
+Fecha: {{ timestamp }}
+
+## Resumen
+
+Total canales: {{ channels | length }}
+
+## Canales
+
+{% for c in channels %}
+### {{ loop.index }}. {{ c.title }} ({{ c.channelId }})
+- Subscribers: {{ c.subscriberCount or 'N/A' }}
+- Views: {{ c.viewCount or 'N/A' }}
+- Videos: {{ c.videoCount or 'N/A' }}
+- Competencia: {{ c.competencia_tipo or 'Indirecta' }}
+- Recurrente: {{ c.recurrente or False }}
+- Origin keywords: {{ c.origin_keywords or '' }}
+
+---
+{% endfor %}

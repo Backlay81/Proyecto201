@@ -14,7 +14,7 @@ except Exception:
 	# python-dotenv no está instalado o fallo cargando .env; seguir adelante y usar os.environ
 	pass
 
-YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY', "AIzaSyDBxr4FcogZpngmBVR8EcSpTx8Tz3gcrWc")
+YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY', '')
 
 # Google Ads API (se carga desde google-ads.yaml)
 # Este archivo complementa las credenciales YAML

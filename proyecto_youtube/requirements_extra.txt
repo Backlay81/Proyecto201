@@ -1,0 +1,8 @@
+polars
+SQLAlchemy
+alembic
+pydantic
+python-dotenv
+rich
+Jinja2
+pyarrow

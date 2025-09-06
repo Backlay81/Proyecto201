@@ -1,0 +1,170 @@
+# Informe de canales - busqueda_perros_5_mejores_comidas_para_perros
+
+Fecha: 2025-09-06 13:01:52
+
+Total canales: 20
+
+## Competencia directa (mismo nicho)
+
+### 1. PerrosTV 🐶 (UCMJUtxHLPfkcJnCWEJpwAHA)
+
+- Subscribers: 5760
+- Total views: 1556954
+- Videos count: 606
+
+---
+
+## Competencia indirecta (nichos cercanos)
+
+### 1. Ecomunga (UCf658e97tQEA_zhXvmhMnSw)
+
+- Subscribers: 12300
+- Total views: 3911452
+- Videos count: 51
+
+---
+
+### 2. FridaPets (UCT9Pd4qNehGTikVWOeiR5oQ)
+
+- Subscribers: 6080
+- Total views: 1013711
+- Videos count: 95
+
+---
+
+### 3. ProfecoTV (UC6IySBNNBxQh_8hVa9z3p0g)
+
+- Subscribers: 439000
+- Total views: 59937770
+- Videos count: 2855
+
+---
+
+### 4. JOSMEJIA (UCZ9WjUhzWk_xI0MDfzCwnjw)
+
+- Subscribers: 3050
+- Total views: 941368
+- Videos count: 44
+
+---
+
+### 5. ClickPick Reviews (UCkU4r51gTtlYhwGGRz1ciMA)
+
+- Subscribers: 50
+- Total views: 23567
+- Videos count: 43
+
+---
+
+### 6. tkESzone (UCD0GrDqCLHirZmFmmMjBF4A)
+
+- Subscribers: 14900
+- Total views: 5440246
+- Videos count: 3218
+
+---
+
+### 7. Como gato panza arriba (UC5XwSiVCgJLxb1gxg5v-3vQ)
+
+- Subscribers: 11300
+- Total views: 951529
+- Videos count: 117
+
+---
+
+### 8. Doggy tv (UCbmmPVLSBaaA1FIJ3-voTZQ)
+
+- Subscribers: 10900
+- Total views: 1455421
+- Videos count: 91
+
+---
+
+### 9. Chuchos Selectos (UCmBpFeQPi5P0XUXK8ufBpIw)
+
+- Subscribers: 11300
+- Total views: 1096181
+- Videos count: 533
+
+---
+
+### 10. VETERINARIO GRATIS (UCfb-LHQIO9Azl4oawTM8opg)
+
+- Subscribers: 1880000
+- Total views: 254045075
+- Videos count: 3391
+
+---
+
+### 11. 6 poodle´s  (UCrDZ5vRppsEsstjc59ESWMA)
+
+- Subscribers: 230
+- Total views: 76092
+- Videos count: 51
+
+---
+
+### 12. chemanimals (UCxQpJVqOBTVkambNd3cFnFw)
+
+- Subscribers: 4390
+- Total views: 821852
+- Videos count: 2256
+
+---
+
+### 13. El Espacio de Kentuchy (UCUPKcE-hwllnKlZIWzprRUQ)
+
+- Subscribers: 40900
+- Total views: 9290763
+- Videos count: 273
+
+---
+
+### 14. Agronatura (UCSUV5PhPyVKmVK_tunxb2SQ)
+
+- Subscribers: 1510
+- Total views: 502772
+- Videos count: 28
+
+---
+
+### 15. Descubre Productos (UCla_Qv5UPsLjybunudak9Ew)
+
+- Subscribers: 9480
+- Total views: 3946415
+- Videos count: 119
+
+---
+
+### 16. Todo para tu perro (UC1nlIZFc3acvDRBaG8y29GQ)
+
+- Subscribers: 1390
+- Total views: 343532
+- Videos count: 237
+
+---
+
+### 17. El Hombre Canino (UCluVWwlba1iwVU7ZDfFmIyw)
+
+- Subscribers: 87
+- Total views: 29303
+- Videos count: 30
+
+---
+
+### 18. El Desván de Berna (El Desván de Berna) (UCJfoAO1xWx2IU0VrAoCzQRw)
+
+- Subscribers: 2330
+- Total views: 376753
+- Videos count: 104
+
+---
+
+### 19. Vetropía (UCsCLmDPw0qwGAqZ59hLDL_Q)
+
+- Subscribers: 36400
+- Total views: 2292287
+- Videos count: 93
+
+---
+
