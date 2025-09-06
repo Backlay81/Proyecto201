@@ -48,6 +48,24 @@ try:
 	import polars as pl
 except Exception:
 	pl = None
+
+# Optional nicer console output with Rich
+try:
+	from rich.console import Console
+	from rich.panel import Panel
+	from rich.table import Table
+	from rich.text import Text
+	console = Console()
+except Exception:
+	console = None
+
+
+def rich_print(text, style=None, **kwargs):
+	"""Print with Rich if available, fallback to normal print."""
+	if console:
+		console.print(text, style=style, **kwargs)
+	else:
+		print(text)
 # dotenv for local env support
 try:
 	from dotenv import load_dotenv
@@ -64,7 +82,7 @@ sys.path.append(str(PROJECT_ROOT / 'utils'))
 try:
 	from config import YOUTUBE_API_KEY
 except ImportError:
-	print("❌ Error: No se pudo importar YOUTUBE_API_KEY desde config.py")
+	rich_print("❌ Error: No se pudo importar YOUTUBE_API_KEY desde config.py", style="bold red")
 	sys.exit(1)
 
 # Optional DB persistence: try to import helpers from proyecto_youtube.db
@@ -573,8 +591,8 @@ class NicheAnalyzerYouTubeUnificado:
 		"""
 		UNIFICADO: Análisis completo que combina métricas originales + nuevas
 		"""
-		print(f"\n🔍 Analizando nicho: '{keyword}'")
-		print("=" * 60)
+		rich_print(f"\n🔍 Analizando nicho: '{keyword}'", style="bold blue")
+		rich_print("=" * 60, style="cyan")
 
 		# 1. Buscar videos (usar max_results para controlar el tamaño de la muestra)
 		videos = self.search_videos(keyword, max_results=max_results,

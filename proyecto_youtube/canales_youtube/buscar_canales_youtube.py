@@ -24,6 +24,30 @@ try:
 except Exception:
     pd = None
 
+# Optional nicer exports with Polars
+try:
+    import polars as pl
+except Exception:
+    pl = None
+
+# Optional nicer console output with Rich
+try:
+    from rich.console import Console
+    from rich.panel import Panel
+    from rich.table import Table
+    from rich.text import Text
+    console = Console()
+except Exception:
+    console = None
+
+
+def rich_print(text, style=None, **kwargs):
+    """Print with Rich if available, fallback to normal print."""
+    if console:
+        console.print(text, style=style, **kwargs)
+    else:
+        print(text)
+
 # Ajustar PROJECT_ROOT para que apunte a la carpeta `proyecto_youtube`
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = PROJECT_ROOT / 'out'
@@ -143,7 +167,15 @@ def export_outputs(rows: List[Dict[str, Any]], prefix: str):
 
     # Export CSV
     try:
-        if pd is not None:
+        if pl is not None:
+            df = pl.DataFrame(rows)
+            df.write_csv(csv_path, include_header=True)
+            # Try parquet export with Polars
+            try:
+                df.write_parquet(OUT_DIR / f"{prefix}_{timestamp}.parquet")
+            except Exception:
+                pass
+        elif pd is not None:
             df = pd.DataFrame(rows)
             df.to_csv(csv_path, index=False, encoding='utf-8-sig')
             # Try parquet if pyarrow available
@@ -250,8 +282,8 @@ def main():
 
     # For each keyword produce a separate output with up to --max-results channels
     for kw in keywords:
-        print(f"\n🔎 Buscando canales para: {kw}")
-        print(f"  → Modo seleccionado: {args.mode}")
+        rich_print(f"\n🔎 Buscando canales para: {kw}", style="bold blue")
+        rich_print(f"  → Modo seleccionado: {args.mode}", style="cyan")
         # Extract channel IDs preserving relevance order
         channel_ids = search_videos_get_channels(youtube, kw, max_results=args.max_results)
         print(f"  → Canales únicos encontrados (pre-selección): {len(channel_ids)}")
